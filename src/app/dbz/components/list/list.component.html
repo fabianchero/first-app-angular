@@ -1,0 +1,28 @@
+<h4>Listado</h4>
+<ul class="list-group">
+  <li
+    *ngFor="
+      let character of characterList;
+      let i = index;
+      let isFirst = first;
+      let isLast = last;
+      let isEven = even
+    "
+    class="list-group-item d-flex justify-content-between align-items-center"
+    [ngClass]="{
+      'list-group-item-dark': isLast,
+      'list-group-item-info': isFirst,
+          }"
+  >
+    <div>
+      <strong class="text-primary">{{ i }}.</strong>
+      <span> {{ character.name }} - </span>
+      <strong>Power -</strong>
+      <span> {{ character.name }} </span>
+      <span *ngIf="isFirst">: Es el primero</span>
+      <span *ngIf="isLast">: Es el ultimo</span>
+    </div>
+    <button class="btn btn-danger" (click)="onDelete(character.id)">X</button>
+    <!-- <span *ngIf="isEven"> __ Es par</span> -->
+  </li>
+</ul>
